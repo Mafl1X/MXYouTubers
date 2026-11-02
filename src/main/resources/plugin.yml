@@ -1,0 +1,21 @@
+name: MXYouTubers
+version: '${project.version}'
+main: me.mafl1x.mxyoutubers.MXYouTubers
+api-version: '1.16'
+authors: [Mafl1x]
+commands:
+  media:
+    description: Main media command
+    usage: /media
+  mediaadmin:
+    description: Admin media panel
+    usage: /mediaadmin
+    permission: mxyoutubers.admin
+  promo:
+    description: Use media promo code
+    usage: /promo <code>
+permissions:
+  mxyoutubers.use:
+    default: true
+  mxyoutubers.admin:
+    default: op

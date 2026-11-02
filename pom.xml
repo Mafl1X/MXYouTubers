@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>me.mafl1x</groupId>
+  <artifactId>MXYouTubers</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>MXYouTubers</name>
+  <description>Paper 1.16.5 media partnership plugin focused on YouTube automation.</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>dev.obfuscator</groupId>
+        <artifactId>obfuscator-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <profile>AGGRESSIVE</profile>
+          <renamePackages>true</renamePackages>
+          <stringEncryption>true</stringEncryption>
+          <invokeDynamic>true</invokeDynamic>
+          <controlFlow>false</controlFlow>
+        </configuration>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>papermc</id>
+      <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.destroystokyo.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.16.5-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.exlll</groupId>
+      <artifactId>configlib-yaml</artifactId>
+      <version>4.5.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>4.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>3.45.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+  </dependencies>
+</project>
